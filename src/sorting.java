@@ -16,7 +16,7 @@ public class sorting {
         System.out.println(" ");
 
         //bubbleSort(a);
-        //selectSort(a);
+        selectSort(a);
 
 
         for (int i = 0; i < a.length; i++)
@@ -32,7 +32,7 @@ public class sorting {
             }
         }
     }
-    
+
     public static void selectSort(int[] a){
         int curMinIndex;
         for (int i = 0; i < a.length - 1; i++){
