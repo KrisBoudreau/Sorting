@@ -16,11 +16,23 @@ public class sorting {
         System.out.println(" ");
 
         //bubbleSort(a);
-        selectSort(a);
+        //selectSort(a);
+        insertionSort(a);
 
 
         for (int i = 0; i < a.length; i++)
             System.out.print(a[i] + " ");
+    }
+
+    public static void insertionSort(int[] a) {
+        int j;
+        for (int i = 0; i < a.length; i++){
+            j = i;
+            while (j > 0 && a[j] < a[j - 1]){ //switch to > and it sorts it in descending
+                swap(a, j, j-1);
+                j--;
+            }
+        }
     }
 
     public static void bubbleSort(int[] a){
