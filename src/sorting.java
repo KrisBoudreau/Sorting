@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 
 public class sorting {
     public static void main(String[] args) {
@@ -17,11 +18,22 @@ public class sorting {
 
         //bubbleSort(a);
         //selectSort(a);
-        insertionSort(a);
+        //insertionSort(a);
+        a = mergeSort(a);
 
 
         for (int i = 0; i < a.length; i++)
             System.out.print(a[i] + " ");
+    }
+
+    public static int[] mergeSort(int[] a){
+        if (a.length == 1){
+            return a;
+        }
+        int[] b = mergeSort(Arrays.copyOfRange(a, 0, a.length / 2));
+        int[] c = mergeSort(Arrays.copyOfRange(a, a.length / 2, a.length));
+        
+        return merge(b, c);
     }
 
     public static void insertionSort(int[] a) {
@@ -64,4 +76,31 @@ public class sorting {
         a[j] = tmp;
     }
     
+    public static int[] merge(int[] a, int[] b){
+        int[] c = new int[a.length + b.length];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while(i < a.length || j < b.length){
+            if (i == a.length){
+                c[k] = b[j];
+                j++;
+            }
+            else if (j == b.length){
+                c[k] = a[i];
+                i++;
+            }
+            else if (a[i] < b[j]){
+                c[k] = a[i];
+                i++;
+            }
+            else {
+                c[k] = b[j];
+                j++;
+            }
+            k++;
+        }
+        return c;
+
+    }
 }
