@@ -15,28 +15,34 @@ public class sorting {
 
         System.out.println(" ");
 
-        bubble(a);
-        
+        //bubbleSort(a);
+        //selectSort(a);
+
+
         for (int i = 0; i < a.length; i++)
             System.out.print(a[i] + " ");
-
-
-
-    
     }
 
-    public static void bubble(int[] a){
-        boolean sorted = true;
+    public static void bubbleSort(int[] a){
         for (int i = 0; i < a.length - 1; i++){
             for (int j = 0; j < a.length - 1 - i; j++){
                 if (a[j] > a[j+1]){
                     swap(a, j, j+1);
-                    sorted = false;
                 }
             }
-            if (sorted){
-                break;
+        }
+    }
+    
+    public static void selectSort(int[] a){
+        int curMinIndex;
+        for (int i = 0; i < a.length - 1; i++){
+            curMinIndex = i;
+            for (int j = i; j < a.length; j++){
+                if (a[curMinIndex] > a[j]){
+                    curMinIndex = j;
+                }
             }
+            swap(a, i, curMinIndex);
         }
     }
 
