@@ -19,11 +19,35 @@ public class sorting {
         //bubbleSort(a);
         //selectSort(a);
         //insertionSort(a);
-        a = mergeSort(a);
+        //a = mergeSort(a);
+        quickSort(a, 0, a.length - 1);
 
 
         for (int i = 0; i < a.length; i++)
             System.out.print(a[i] + " ");
+    }
+
+    public static void quickSort(int[] a, int low, int high){
+        if (low >= high){
+            return;
+        }
+        int p = partition(a, low, high);
+        quickSort(a, low, p-1);
+        quickSort(a, p + 1, high);
+    }
+
+    public static int partition(int[] a, int low, int high){
+
+        int p = a[high];
+        int wall = low - 1;
+
+        for (int i = low; i <= high; i++){
+            if (a[i] <= p){
+                wall++;
+                swap(a, wall, i);
+            }
+        }
+        return wall;
     }
 
     public static int[] mergeSort(int[] a){
