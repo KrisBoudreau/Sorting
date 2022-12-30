@@ -10,6 +10,8 @@ public class sorting {
 
         for (int i = 0; i < a.length; i++)
             a[i] = r.nextInt(100);
+
+        a[0] = 0;
         
         for (int i = 0; i < a.length; i++)
             System.out.print(a[i] + " ");
@@ -20,12 +22,47 @@ public class sorting {
         //selectSort(a);
         //insertionSort(a);
         //a = mergeSort(a);
-        quickSort(a, 0, a.length - 1);
-
+        //quickSort(a, 0, a.length - 1);
+        heapSort(a);
+        
 
         for (int i = 0; i < a.length; i++)
             System.out.print(a[i] + " ");
     }
+
+
+    public static void heapSort(int[] a) {
+        buildMaxHeap(a);
+        for (int i = a.length - 1; i > 0; i--){
+            swap(a, 1, i);
+            downHeap(a, 1, i);
+        }
+        
+        
+    }
+
+    public static void buildMaxHeap(int[] a) {
+        for (int i = a.length / 2; i > 0; i--){
+            downHeap(a, i, a.length - 1);
+        }   
+    }
+
+    public static void downHeap(int[] a, int i, int until) {
+        int max = i;
+
+        if (2 * i < a.length && 2 * i < until && a[i] < a[2 * i]){
+            max = 2 * i;
+        }
+        if (2 * i + 1 < a.length && 2 * i + 1 < until && a[max] < a[2 * i + 1]){
+            max = 2 * i + 1;
+        }
+        if (max != i){
+            swap(a, i, max);
+            downHeap(a, max, until);
+        }
+        
+    }
+
 
     public static void quickSort(int[] a, int low, int high){
         if (low >= high){
